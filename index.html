@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Groovy vs Java 8</title>
+
+		<meta name="description" content="A presentation of Groovy programming language">
+		<meta name="author" content="Vincent Van Steenbergen">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/custom.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<div class="slides">
+				<section>
+					<h1>Groovy</h1>
+					<h2>vs</h2>
+					<h1>JAVA 8</h1>
+				</section>
+				<section>
+					<h2>Whoami</h2>
+					<h3 class="fragment" data-fragment-index="0">Vincent Van Steenbergen</h3>
+					<p class="fragment" data-fragment-index="1">Développeur indépendant</p>
+					<p class="fragment" data-fragment-index="2">
+						<img src="img/bdxjug.png">
+					</p>
+					<p class="fragment" data-fragment-index="3">
+						<a href="http://vansteen.fr">http://vansteen.fr</a>
+					</p>
+					<p class="fragment" data-fragment-index="4">
+						Twitter: <a href="https://twitter.com/nsteenv">@nsteenv</a>
+					</p>
+				</section>
+				<section data-background-image="img/sf.jpg">
+					<img src="img/fight.png" class="fragment" data-fragment-index="0">
+				</section>
+				<section>
+					<section>
+						<h2>Groovy</h2>
+						<p class="fragment" data-fragment-index="0">Petite question:</p>
+						<p class="fragment" data-fragment-index="1">Qui a déjà utilisé Groovy?</p>
+						<p class="fragment" data-fragment-index="2">Non mais vraiment?</p>
+					</section>
+					<section>
+						<h2>Statistiques</h2>
+						<p class="fragment" data-fragment-index="0">3 millions de downloads en 2013</p>
+						<p><img src="img/stats.png"  style="width: 500px; height: 300px; max-height: none; max-width: none;" class="fragment" data-fragment-index="0"></p>
+						<p class="fragment" data-fragment-index="1">et pourtant...</p>
+					</section>
+					<section>
+						<h2>Paradoxalement peu connu</h2>
+						<blockquote class="twitter-tweet" lang="fr"><p>it is nice and at the same time weird to see Java devs now enjoying benefits that <a href="https://twitter.com/search?q=%23groovylang&amp;src=hash">#groovylang</a> has provided since 10 years</p>&mdash; Dierk König (@mittie) <a href="https://twitter.com/mittie/statuses/446292208048943104">19 Mars 2014</a></blockquote>
+						<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+					</section>
+					<section>
+						<h2>Quoi que...</h2>
+						<blockquote class="twitter-tweet" data-conversation="none" lang="fr"><p><a href="https://twitter.com/mittie">@mittie</a> it is nice and at the same time weird to see Groovy devs enjoying benefits that Lisp has provided since 1959... oh, wait. :)</p>&mdash; voiser (@voiser) <a href="https://twitter.com/voiser/statuses/446567847473725440">20 Mars 2014</a></blockquote><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+					</section>
+					<section>
+						<h2>It's just Java!</h2>
+						<p class="fragment" data-fragment-index="0">Mais en mieux!</p>
+						<p class="fragment" data-fragment-index="1">Langage dynamique, orienté objet</p>
+						<p class="fragment" data-fragment-index="2">Avec une touche de programmation fonctionnelle</p>
+					</section>
+					<section>
+						<h2>On peut faire ça</h2>
+						<code>
+						</code>
+					</section>
+					<section>
+						<h2>Où même ça</h2>
+						<code>
+						</code>
+					</section>
+					<section>
+						<h2>Closures</h2>
+					<div>
+					<b>F</b>irst <b>C</b>lass <b>C</b>itizens</div>
+				</section>
+				<section>
+					<h2>Collections</h2>
+				</section>
+				<section>
+					<h2>Sucre syntaxique</h2>
+				</section>
+				<section>
+					<h2>Performances</h2>
+				</section>
+				<section>
+					<h2>Optimisations</h2>
+				</section>
+				<section>
+					<h2>Mais, mais...</h2>
+					<h3>Ca me rapelle vaguement...</h3>
+				</section>
+				<section data-background-image="https://s3.amazonaws.com/media-p.slid.es/uploads/vincentvansteenbergen/images/323791/newchallenger.png" data-background-size="contain">
+					<h2>
+						<br>
+					</h2>
+				</section>
+				<section data-id="201a31cc40532026857aeaa8936ae413">
+					<h2>JAVA 8</h2>
+				</section>
+				<section data-id="3eebb2afbf9c6e83f4581093a26e110b">
+					<h2>ROADMAP</h2>
+				</section>
+				<section data-id="54e68a3867c24f7196e2d7b6fa90221a">
+					<h2>GVM</h2>
+				<div>
+					<br>
+				</div>
+				<div>
+				<font style="font-size: 42px;">
+					<b>G</b>roovy en<b>V</b>ironment <b>M</b>anager</font>
+				</div>
+				</section>
+				<section data-id="cf6b4570c9049dc355997f6f95fc2eee">
+					<section data-id="50dfc4cf5e8ba9fb75edab9a64ebd924">
+						<h2>GROG</h2>
+				<div>
+						<br>
+					</div>
+				<p class="fragment" data-fragment-index="0">
+					<font style="font-size: 42px;">
+						<b>GRO</b>ovy static website <b>G</b>enerator</font>
+					</p>
+					<p>
+					<font style="font-size: 42px;">
+						<br>
+					</font>
+				</p>
+				<p class="fragment" data-fragment-index="1">
+					<font style="font-size: 42px;">Make it work</font>
+				</p>
+				<p>
+				<font style="font-size: 42px;">
+					<br>
+				</font>
+				</p>
+				<p class="fragment" data-fragment-index="2">
+					<font style="font-size: 42px;">//TODO Make it right</font>
+				</p>
+				<p>
+				<font style="font-size: 42px;">
+					<br>
+				</font>
+				</p>
+				<p class="fragment" data-fragment-index="3">
+					<font style="font-size: 42px;">//TODO Make it fast</font>
+				</p>
+				</section>
+				<section data-id="733c5e1421b9e4b018e451ba7638f938">
+					<h2>STATUS</h2>
+					<h3 class="fragment" data-fragment-index="0">
+						<br>Make it work</h3>
+						<h3 class="fragment" data-fragment-index="1">Make it right</h3>
+						<h3 class="fragment" data-fragment-index="2">Make it fast</h3>
+					</section>
+				</section>
+				<section data-id="6095f39b1b667dbac862d36476b7c588">
+					<h2>GRADLE</h2>
+				</section>
+				<section data-id="69670e70f4901aa51c8994f1612cb82d">
+					<h2>SPOCK</h2>
+				</section>
+				<section data-id="3bda6f5a73d780c1c20d550574e29f24">
+					<h2>GRAILS</h2>
+				</section>
+				<section data-id="28944e49fcaea8f51214823713f7e8a0">
+					<h2>VERT.X</h2>
+				</section>
+				<section data-id="1e2b88ca6ba638f113e994217be8b539">
+					<h2>DSL</h2>
+				<div>
+					<br>
+				</div>
+				<p>
+				<font style="font-size: 42px;">
+					<b>D</b>omain <b>S</b>pecific <b>L</b>anguages</font>
+				</p>
+				</section>
+				<section data-id="8cc405432d477448e613581b16270f3e">
+					<h2>Et bien d'autres...</h2>
+					<div>
+						<div style="text-align: left;">
+							<br>
+						</div>
+					</div>
+				</section>
+				<section data-id="8340176fcda196116c84ad51563f7855">
+					<h2>Ressources</h2>
+					<div>
+						<br>
+					</div>
+					<div>
+						<br>
+					</div>
+				</section>
+				<section data-id="53885c1b7ab5cae80363a079a5e6341b">
+					<h2>Credits</h2>
+					<p class="fragment" data-fragment-index="0">
+						<img src="img/bdxjug.png">
+					</p>
+					<p class="fragment" data-fragment-index="1">
+						<img src="img/js.jpeg" style="width: 102px; height: 102px; max-height: none; max-width: none;">
+					</p>
+					<h3 class="fragment" data-fragment-index="2">Merci à vous</h3>
+				</section>
+				<section>
+					<h2>Questions?</h2>
+					<p class="fragment" data-fragment-index="0">Précisions?</p>
+					<p class="fragment" data-fragment-index="1">Just try it!</p>
+				</section>
+				<section>
+					<h2>SEE YOU SPACE COWBOYS!</h2>
+				</section>
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: 'linear', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
