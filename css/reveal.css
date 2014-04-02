@@ -1876,11 +1876,3 @@ body {
 .zoomed .reveal .roll span:after {
 	visibility: hidden;
 }
-
-/*********************************************
- * TWITTER
- *********************************************/
-
-.twitter-tweet {
-	margin: auto;
-}
