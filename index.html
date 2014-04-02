@@ -86,36 +86,139 @@
 						<p class="fragment" data-fragment-index="2">Avec une touche de programmation fonctionnelle</p>
 					</section>
 					<section>
-						<h2>On peut faire ça</h2>
-						<code>
-						</code>
+						<h2>Par exemple</h2>
+						<p class="fragment" data-fragment-index="0">On peut faire ça!</p>
+						<pre class="fragment" data-fragment-index="0"><code>
+							class Dog {
+							    def bark() { println "woof!" }
+							    def sit() { println "(sitting)" }
+							    def jump() { println "boing!" }
+							}
+
+							def doAction( animal, action ) {
+							    animal."$action"()
+							}
+
+							def rex = new Dog()
+
+							doAction( rex, "bark" )
+							doAction( rex, "jump" )
+						</code></pre>
 					</section>
 					<section>
-						<h2>Où même ça</h2>
-						<code>
-						</code>
+						<h2>Où même ça:</h2>
+						<pre><code>
+							def max(int i1, int i2) {
+							    Math.max(i1, i2)
+							}
+							def numbers = [1, 2]
+							assert max( *numbers ) == 2
+						</code></pre>
+						<p class="fragment" data-fragment-index="0">et ce n'est qu'un début!</p>
 					</section>
 					<section>
 						<h2>Closures</h2>
-					<div>
-					<b>F</b>irst <b>C</b>lass <b>C</b>itizens</div>
+						<p class="fragment" data-fragment-index="0">First Class Citizens</p>
+						<pre class="fragment" data-fragment-index="1"><code>
+							def myConst = 5
+							def incByConst = { num -> num + myConst }
+							println incByConst(10) // => 15
+						</code></pre>
+						<p class="fragment" data-fragment-index="2">Variable implicite: it</p>
+						<pre class="fragment" data-fragment-index="3"><code>
+							def display = { println it }
+							display( "hello Bordeaux!" )
+							display "hello Bordeaux" // ça fonctionne aussi!
+						</code></pre>
+				</section>
+				<section>
+					<h2>Fonctions d'Ordre Supérrrieur!</h2>
+					<pre class="fragment" data-fragment-index="0"><code>
+						def list = ['a','b','c','d']
+						def newList = []
+
+						def upperCase = { it.toUpperCase() }
+						list.collect( newList, upperCase )
+
+						assert newList == ["A", "B", "C", "D"]
+					</code></pre>
+					<p class="fragment" data-fragment-index="1">vous trouvez ça compliqué?</p>
 				</section>
 				<section>
 					<h2>Collections</h2>
+					<p class="fragment" data-fragment-index="0">Listes</p>
+					<pre class="fragment" data-fragment-index="0"><code>
+						def list = [5, 6, 7, 8]
+
+						assert list[2] == 7
+						assert list instanceof java.util.List
+						assert [1, 2, 3].collect{ it * 2 } == [2, 4, 6]
+						assert [1, 2, 3].findAll{ it > 1 } == [2, 3]
+					</code></pre>
+					<p class="fragment" data-fragment-index="1">Ranges</p>
+					<pre class="fragment" data-fragment-index="1"><code>
+						def range = 5..8
+
+						assert range[-1] == 8
+						assert range instanceof java.util.List
+						assert range.max() == 8
+						for (i in 1..10) {
+						    println "Hello ${i}"
+						}
+					</code></pre>
+				</section>
+				<section>
+					<h2>Collections</h2>
+					<p class="fragment" data-fragment-index="0">Maps</p>
+					<pre class="fragment" data-fragment-index="0"><code>
+						def map = [name:"Gromit", likes:"cheese", id:1234]
+
+						assert map["name"] == "Gromit"
+						assert map['id'] == 1234
+						assert map instanceof java.util.Map
+
+						map.each{
+						    key, value -> print key
+						}
+					</code></pre>
+					<p class="fragment" data-fragment-index="1">et beaucoup d'autres méthodes bien utiles...</p>
+					<p class="fragment" data-fragment-index="1">contains, findIndexOf, grep, any, every, min, max, sum, flatten, intersect, disjoint, sort, join...</p>
 				</section>
 				<section>
 					<h2>Sucre syntaxique</h2>
+					<p class="fragment" data-fragment-index="0">Elvis (?:)</p>
+					<pre class="fragment" data-fragment-index="0"><code>
+						def displayName = user.name ? user.name : "Anonymous"
+						def displayName = user.name ?: "Anonymous"
+					</code></pre>
+					<p class="fragment" data-fragment-index="1">Safe navigation (?.)</p>
+					<pre class="fragment" data-fragment-index="1"><code>
+						def user = User.find( "admin" )
+						def streetName = user?.address?.street
+					</code></pre>
+					<p class="fragment" data-fragment-index="2">Regular expressions</p>
+					<pre class="fragment" data-fragment-index="2"><code>
+						def cheese = ("cheesecheese" =~ /cheese/).replaceFirst("nice")
+						assert cheese == "nicecheese"
+					</code></pre>
 				</section>
 				<section>
 					<h2>Performances</h2>
+					<p class="fragment" data-fragment-index="0">Forcément moins bonnes que Java</p>
+					<p class="fragment" data-fragment-index="1">Mais pas tant que ça!</p>
+					<p class="fragment" data-fragment-index="2">Beaucoup d'améliorations depuis Groovy 2</p>
 				</section>
 				<section>
 					<h2>Optimisations</h2>
+					<p class="fragment" data-fragment-index="0">Flag InvokeDynamic (--indy) au niveau du compilateur</p>
+					<p class="fragment" data-fragment-index="1">Annotations @CompileStatic et @TypeChecked</p>
+					<p class="fragment" data-fragment-index="2">Utiliser Java pour les parties critiques</p>
 				</section>
 				<section>
 					<h2>Mais, mais...</h2>
-					<h3>Ca me rapelle vaguement...</h3>
+					<h3>Tout ça me rapelle vaguement...</h3>
 				</section>
+			</section>
 				<section data-background-image="https://s3.amazonaws.com/media-p.slid.es/uploads/vincentvansteenbergen/images/323791/newchallenger.png" data-background-size="contain">
 					<h2>
 						<br>
@@ -231,11 +334,12 @@
 				</section>
 				<section>
 					<h2>Questions?</h2>
-					<p class="fragment" data-fragment-index="0">Précisions?</p>
-					<p class="fragment" data-fragment-index="1">Just try it!</p>
+					<p class="fragment" data-fragment-index="0">Oublis?</p>
+					<p class="fragment" data-fragment-index="1">Précisions?</p>
+					<p class="fragment" data-fragment-index="2">Just try it!</p>
 				</section>
 				<section>
-					<h2>SEE YOU SPACE COWBOYS!</h2>
+					<h2>See you space cowboys!</h2>
 				</section>
 			</div>
 
