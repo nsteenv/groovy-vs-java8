@@ -132,107 +132,211 @@
 							display( "hello Bordeaux!" )
 							display "hello Bordeaux" // ça fonctionne aussi!
 						</code></pre>
-				</section>
-				<section>
-					<h2>Fonctions d'Ordre Supérrrieur!</h2>
-					<pre class="fragment" data-fragment-index="0"><code>
-						def list = ['a','b','c','d']
-						def newList = []
+					</section>
+					<section>
+						<h2>Closures</h2>
+						<p class="fragment" data-fragment-index="0">Interfaces fonctionnelles</p>
+						<p class="fragment" data-fragment-index="1">Implémente par défaut la méthode call() de l'interface Callable</p>
+						<pre class="fragment" data-fragment-index="1"><code>
+							def closure = { "called" }
+							assert closure instanceof java.util.concurrent.Callable
+							assert closure() == "called"
+						</code></pre>
+						<p class="fragment" data-fragment-index="2">Possibilités de transtyper une closure</p>
+						<pre class="fragment" data-fragment-index="3"><code>
+							public interface MyFunction { def apply(); }
+							def closure = { "applied" } as MyFunction
+							assert closure instanceof MyFunction
+							assert closure.apply() == "applied"
+						</code></pre>
+					</section>
+					<section>
+						<h2>Fonctions d'Ordre Supérrrieur!</h2>
+						<pre class="fragment" data-fragment-index="0"><code>
+							def list = ['a','b','c','d']
+							def newList = []
 
-						def upperCase = { it.toUpperCase() }
-						list.collect( newList, upperCase )
+							def upperCase = { it.toUpperCase() }
+							list.collect( newList, upperCase )
 
-						assert newList == ["A", "B", "C", "D"]
-					</code></pre>
-					<p class="fragment" data-fragment-index="1">vous trouvez ça compliqué?</p>
-				</section>
-				<section>
-					<h2>Collections</h2>
-					<p class="fragment" data-fragment-index="0">Listes</p>
-					<pre class="fragment" data-fragment-index="0"><code>
-						def list = [5, 6, 7, 8]
+							assert newList == ["A", "B", "C", "D"]
+						</code></pre>
+						<p class="fragment" data-fragment-index="1">vous trouvez ça compliqué?</p>
+					</section>
+					<section>
+						<h2>Collections</h2>
+						<p class="fragment" data-fragment-index="0">Listes</p>
+						<pre class="fragment" data-fragment-index="0"><code>
+							def list = [5, 6, 7, 8]
 
-						assert list[2] == 7
-						assert list instanceof java.util.List
-						assert [1, 2, 3].collect{ it * 2 } == [2, 4, 6]
-						assert [1, 2, 3].findAll{ it > 1 } == [2, 3]
-					</code></pre>
-					<p class="fragment" data-fragment-index="1">Ranges</p>
-					<pre class="fragment" data-fragment-index="1"><code>
-						def range = 5..8
+							assert list[2] == 7
+							assert list instanceof java.util.List
+							assert [1, 2, 3].collect{ it * 2 } == [2, 4, 6]
+							assert [1, 2, 3].findAll{ it > 1 } == [2, 3]
+						</code></pre>
+						<p class="fragment" data-fragment-index="1">Ranges</p>
+						<pre class="fragment" data-fragment-index="1"><code>
+							def range = 5..8
 
-						assert range[-1] == 8
-						assert range instanceof java.util.List
-						assert range.max() == 8
-						for (i in 1..10) {
-						    println "Hello ${i}"
-						}
-					</code></pre>
-				</section>
-				<section>
-					<h2>Collections</h2>
-					<p class="fragment" data-fragment-index="0">Maps</p>
-					<pre class="fragment" data-fragment-index="0"><code>
-						def map = [name:"Gromit", likes:"cheese", id:1234]
+							assert range[-1] == 8
+							assert range instanceof java.util.List
+							assert range.max() == 8
+							for (i in 1..10) {
+							    println "Hello ${i}"
+							}
+						</code></pre>
+					</section>
+					<section>
+						<h2>Collections</h2>
+						<p class="fragment" data-fragment-index="0">Maps</p>
+						<pre class="fragment" data-fragment-index="0"><code>
+							def map = [name:"Gromit", likes:"cheese", id:1234]
 
-						assert map["name"] == "Gromit"
-						assert map['id'] == 1234
-						assert map instanceof java.util.Map
+							assert map["name"] == "Gromit"
+							assert map['id'] == 1234
+							assert map instanceof java.util.Map
 
-						map.each{
-						    key, value -> print key
-						}
-					</code></pre>
-					<p class="fragment" data-fragment-index="1">et beaucoup d'autres méthodes bien utiles...</p>
-					<p class="fragment" data-fragment-index="1">contains, findIndexOf, grep, any, every, min, max, sum, flatten, intersect, disjoint, sort, join...</p>
+							map.each{
+							    key, value -> print key
+							}
+						</code></pre>
+						<p class="fragment" data-fragment-index="1">et beaucoup d'autres méthodes bien utiles...</p>
+						<p class="fragment" data-fragment-index="1">contains, findIndexOf, grep, any, every, min, max, sum, flatten, intersect, disjoint, sort, join...</p>
+					</section>
+					<section>
+						<h2>Sucre syntaxique</h2>
+						<p class="fragment" data-fragment-index="0">Elvis (?:)</p>
+						<pre class="fragment" data-fragment-index="0"><code>
+							def displayName = user.name ? user.name : "Anonymous"
+							def displayName = user.name ?: "Anonymous"
+						</code></pre>
+						<p class="fragment" data-fragment-index="1">Safe navigation (?.)</p>
+						<pre class="fragment" data-fragment-index="1"><code>
+							def user = User.find( "admin" )
+							def streetName = user?.address?.street
+						</code></pre>
+						<p class="fragment" data-fragment-index="2">Regular expressions</p>
+						<pre class="fragment" data-fragment-index="2"><code>
+							def cheese = ("cheesecheese" =~ /cheese/).replaceFirst("nice")
+							assert cheese == "nicecheese"
+						</code></pre>
+					</section>
+					<section>
+						<h2>Performances</h2>
+						<p class="fragment" data-fragment-index="0">Forcément moins bonnes que Java</p>
+						<p class="fragment" data-fragment-index="1">Mais pas tant que ça!</p>
+						<p class="fragment" data-fragment-index="2">Beaucoup d'améliorations depuis Groovy 2</p>
+					</section>
+					<section>
+						<h2>Optimisations</h2>
+						<p class="fragment" data-fragment-index="0">Flag InvokeDynamic (--indy) au niveau du compilateur</p>
+						<p class="fragment" data-fragment-index="1">Annotations @CompileStatic et @TypeChecked</p>
+						<p class="fragment" data-fragment-index="2">Utiliser Java pour les parties critiques</p>
+					</section>
+					<section>
+						<h2>Mais, mais...</h2>
+						<h3>Tout ça me rapelle vaguement...</h3>
+					</section>
+				</section>
+				<section data-background-image="img/newchallenger.png" data-background-size="contain"></section>
+				<section>
+					<section>
+						<h2>Enfin!</h2>
+						<img src="img/java8.jpg">
+					</section>
+					<section>
+						<h2>Lambdas</h2>
+						<p class="fragment" data-fragment-index="0">Java 8</p>
+						<pre class="fragment" data-fragment-index="0"><code>
+							List list = Arrays.asList(1,2,3,4);
+							list.forEach(n -> System.out.println(n));
+						</code></pre>
+						<p class="fragment" data-fragment-index="1">Groovy</p>
+						<pre class="fragment" data-fragment-index="1"><code>
+							def list = [1, 2, 3, 4]
+							list.each { println it }
+						</code></pre>
+					</section>
+					<section>
+						<h2>Collect</h2>
+						<p class="fragment" data-fragment-index="0">Java 8</p>
+						<pre class="fragment" data-fragment-index="0"><code>
+							List list = Arrays.asList(1,2,3,4);
+							List newList = list.stream()
+							                   .map((Integer n) -> n * 5)
+							                   .collect(Collectors.toList());
+						</code></pre>
+						<p class="fragment" data-fragment-index="1">Groovy</p>
+						<pre class="fragment" data-fragment-index="1"><code>
+							def list = [1, 2, 3, 4]
+							def newList = list.collect { n -> n * 5 }
+							assert newList == [5, 10, 15, 20]
+						</code></pre>
+					</section>
+					<section>
+						<h2>Sort</h2>
+						<p class="fragment" data-fragment-index="0">Java 8</p>
+						<pre class="fragment" data-fragment-index="0"><code>
+							List list = Arrays.asList(1,2,3,4);
+							list = list.stream().sorted().collect(Collectors.toList());
+							list = list.stream().sorted((Integer a, Integer b) ->
+							    Integer.valueOf(a-b).compareTo(b))
+							           .collect(Collectors.toList()
+							);
+							list = list.stream().sorted((Integer a, Integer b) ->
+							    b.compareTo(a)).collect(Collectors.toList()
+							);
+						</code></pre>
+						<p class="fragment" data-fragment-index="1">Groovy</p>
+						<pre class="fragment" data-fragment-index="1"><code>
+							def list = [2, 3, 4, 1]
+							assert list.sort() == [1, 2, 3, 4]
+							assert list.sort { a, b -> a-b <=> b } == [1, 4, 3, 2]
+							assert list.reverse() == [2, 3, 4, 1]
+						</code></pre>
+					</section>
+					<section>
+						<h2>Références de méthodes</h2>
+						<p class="fragment" data-fragment-index="0">Java 8 (::)</p>
+						<pre class="fragment" data-fragment-index="0"><code>
+							List list = Arrays.asList(1,2,3,4);
+							strings = strings.stream()
+							                 .map(Helpers::modifier)
+							                 .collect(Collectors.toList());
+						</code></pre>
+						<p class="fragment" data-fragment-index="1">Groovy (&)</p>
+						<pre class="fragment" data-fragment-index="1"><code>
+							def modifier(String item) { "new_${item}" }
+							def list = [1, 2]
+							assert list.collect(this.&modifier) == ['new_1', 'new_2']
+						</code></pre>
+					</section>
+					<section>
+						<h2>Bilan</h2>
+						<p class="fragment" data-fragment-index="0">Syntaxe et concepts trés proches!</p>
+						<p class="fragment" data-fragment-index="1">Groovy =~ Java 8</p>
+						<p class="fragment" data-fragment-index="2">Java 8 reste plus perfomant </p>
+					</section>
+					<section>
+						<h2>Roadmap Groovy</h2>
+						<p class="fragment" data-fragment-index="0">Actuellement en version 2.2</p>
+						<p class="fragment" data-fragment-index="1">Version 2.3 RC en avril!</p>
+						<p class="fragment" data-fragment-index="2">Compatible Java 8</p>
+						<p class="fragment" data-fragment-index="3">Version 3 prévue pour fin 2014</p>
+					</section>
+					<section>
+						<h2>Groovy 3</h2>
+						<p class="fragment" data-fragment-index="0">Grammaire basée sur Antlr v4</p>
+						<p class="fragment" data-fragment-index="1">Support complet de Java 8</p>
+						<p class="fragment" data-fragment-index="2">Protocole Meta-Objet dédié<p>
+						<p class="fragment" data-fragment-index="2">(amélioration des performances avec InvokeDynamic)</p>
+					</section>
+					<section>
+						<h2>Aujourd'hui</h2>
+						<p class="fragment" data-fragment-index="0">Quel est l'intérêt d'utiliser Groovy?</p>
+					</section>
 				</section>
 				<section>
-					<h2>Sucre syntaxique</h2>
-					<p class="fragment" data-fragment-index="0">Elvis (?:)</p>
-					<pre class="fragment" data-fragment-index="0"><code>
-						def displayName = user.name ? user.name : "Anonymous"
-						def displayName = user.name ?: "Anonymous"
-					</code></pre>
-					<p class="fragment" data-fragment-index="1">Safe navigation (?.)</p>
-					<pre class="fragment" data-fragment-index="1"><code>
-						def user = User.find( "admin" )
-						def streetName = user?.address?.street
-					</code></pre>
-					<p class="fragment" data-fragment-index="2">Regular expressions</p>
-					<pre class="fragment" data-fragment-index="2"><code>
-						def cheese = ("cheesecheese" =~ /cheese/).replaceFirst("nice")
-						assert cheese == "nicecheese"
-					</code></pre>
-				</section>
-				<section>
-					<h2>Performances</h2>
-					<p class="fragment" data-fragment-index="0">Forcément moins bonnes que Java</p>
-					<p class="fragment" data-fragment-index="1">Mais pas tant que ça!</p>
-					<p class="fragment" data-fragment-index="2">Beaucoup d'améliorations depuis Groovy 2</p>
-				</section>
-				<section>
-					<h2>Optimisations</h2>
-					<p class="fragment" data-fragment-index="0">Flag InvokeDynamic (--indy) au niveau du compilateur</p>
-					<p class="fragment" data-fragment-index="1">Annotations @CompileStatic et @TypeChecked</p>
-					<p class="fragment" data-fragment-index="2">Utiliser Java pour les parties critiques</p>
-				</section>
-				<section>
-					<h2>Mais, mais...</h2>
-					<h3>Tout ça me rapelle vaguement...</h3>
-				</section>
-			</section>
-				<section data-background-image="https://s3.amazonaws.com/media-p.slid.es/uploads/vincentvansteenbergen/images/323791/newchallenger.png" data-background-size="contain">
-					<h2>
-						<br>
-					</h2>
-				</section>
-				<section data-id="201a31cc40532026857aeaa8936ae413">
-					<h2>JAVA 8</h2>
-				</section>
-				<section data-id="3eebb2afbf9c6e83f4581093a26e110b">
-					<h2>ROADMAP</h2>
-				</section>
-				<section data-id="54e68a3867c24f7196e2d7b6fa90221a">
 					<h2>GVM</h2>
 				<div>
 					<br>
