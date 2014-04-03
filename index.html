@@ -59,7 +59,7 @@
 				</section>
 				<section>
 					<section>
-						<h2>Groovy</h2>
+						<p><img src="img/groovy.png" style="width: 500px; height: 300px; max-height: none; max-width: none;"></p>
 						<p class="fragment" data-fragment-index="0">Petite question:</p>
 						<p class="fragment" data-fragment-index="1">Qui a déjà utilisé Groovy?</p>
 						<p class="fragment" data-fragment-index="2">Non mais vraiment?</p>
@@ -67,7 +67,7 @@
 					<section>
 						<h2>Statistiques</h2>
 						<p class="fragment" data-fragment-index="0">3 millions de downloads en 2013</p>
-						<p><img src="img/stats.png"  style="width: 500px; height: 300px; max-height: none; max-width: none;" class="fragment" data-fragment-index="0"></p>
+						<p><img src="img/stats.png" style="width: 500px; height: 300px; max-height: none; max-width: none;" class="fragment" data-fragment-index="0"></p>
 						<p class="fragment" data-fragment-index="1">et pourtant...</p>
 					</section>
 					<section>
@@ -329,95 +329,159 @@
 						<p class="fragment" data-fragment-index="0">Grammaire basée sur Antlr v4</p>
 						<p class="fragment" data-fragment-index="1">Support complet de Java 8</p>
 						<p class="fragment" data-fragment-index="2">Protocole Meta-Objet dédié<p>
-						<p class="fragment" data-fragment-index="2">(amélioration des performances avec InvokeDynamic)</p>
+						<p class="fragment" data-fragment-index="3">(amélioration des performances avec InvokeDynamic)</p>
 					</section>
 					<section>
 						<h2>Aujourd'hui</h2>
 						<p class="fragment" data-fragment-index="0">Quel est l'intérêt d'utiliser Groovy?</p>
+						<p class="fragment" data-fragment-index="1">La syntaxe sympa, d'accord!</p>
+						<p class="fragment" data-fragment-index="2">Mais encore?</p>
 					</section>
 				</section>
 				<section>
-					<h2>GVM</h2>
-				<div>
-					<br>
-				</div>
-				<div>
-				<font style="font-size: 42px;">
-					<b>G</b>roovy en<b>V</b>ironment <b>M</b>anager</font>
-				</div>
-				</section>
-				<section data-id="cf6b4570c9049dc355997f6f95fc2eee">
-					<section data-id="50dfc4cf5e8ba9fb75edab9a64ebd924">
-						<h2>GROG</h2>
-				<div>
-						<br>
-					</div>
-				<p class="fragment" data-fragment-index="0">
-					<font style="font-size: 42px;">
-						<b>GRO</b>ovy static website <b>G</b>enerator</font>
-					</p>
-					<p>
-					<font style="font-size: 42px;">
-						<br>
-					</font>
-				</p>
-				<p class="fragment" data-fragment-index="1">
-					<font style="font-size: 42px;">Make it work</font>
-				</p>
-				<p>
-				<font style="font-size: 42px;">
-					<br>
-				</font>
-				</p>
-				<p class="fragment" data-fragment-index="2">
-					<font style="font-size: 42px;">//TODO Make it right</font>
-				</p>
-				<p>
-				<font style="font-size: 42px;">
-					<br>
-				</font>
-				</p>
-				<p class="fragment" data-fragment-index="3">
-					<font style="font-size: 42px;">//TODO Make it fast</font>
-				</p>
-				</section>
-				<section data-id="733c5e1421b9e4b018e451ba7638f938">
-					<h2>STATUS</h2>
-					<h3 class="fragment" data-fragment-index="0">
-						<br>Make it work</h3>
-						<h3 class="fragment" data-fragment-index="1">Make it right</h3>
-						<h3 class="fragment" data-fragment-index="2">Make it fast</h3>
+					<section>
+						<h2>DSL</h2>
+						<pre class="fragment" data-fragment-index="1"><code>
+							  static mapping = {
+							    table 'person'
+							    columns {
+							      name column:'name'
+							    }
+							  }
+						</code></pre>
+					</section>
+					<section>
+						<h2>Exemple</h2>
+						<p class="fragment" data-fragment-index="0">Domain Specific Languages</p>
+						<p class="fragment" data-fragment-index="1">Modéliser la logique métier à l'aide un mini-langage dédié</p>
+						<p class="fragment" data-fragment-index="1">Syntaxe proche du langage naturel</p>
 					</section>
 				</section>
-				<section data-id="6095f39b1b667dbac862d36476b7c588">
-					<h2>GRADLE</h2>
-				</section>
-				<section data-id="69670e70f4901aa51c8994f1612cb82d">
-					<h2>SPOCK</h2>
-				</section>
-				<section data-id="3bda6f5a73d780c1c20d550574e29f24">
-					<h2>GRAILS</h2>
-				</section>
-				<section data-id="28944e49fcaea8f51214823713f7e8a0">
-					<h2>VERT.X</h2>
-				</section>
-				<section data-id="1e2b88ca6ba638f113e994217be8b539">
-					<h2>DSL</h2>
-				<div>
-					<br>
-				</div>
-				<p>
-				<font style="font-size: 42px;">
-					<b>D</b>omain <b>S</b>pecific <b>L</b>anguages</font>
-				</p>
-				</section>
-				<section data-id="8cc405432d477448e613581b16270f3e">
-					<h2>Et bien d'autres...</h2>
-					<div>
-						<div style="text-align: left;">
-							<br>
-						</div>
-					</div>
+				<section>
+					<section>
+						<h2>Ecosystème</h2>
+					</section>
+
+					<section>
+						<h2>GVM</h2>
+						<p class="fragment" data-fragment-index="0">Groovy enVironment Manager</p>
+						<p class="fragment" data-fragment-index="1">Installer/désistaller et gérer les différentes versions</p>
+						<p class="fragment" data-fragment-index="2">Groovy, Gradle, Grails, etc...</p>
+					</section>
+					<section>
+						<h2>Scripts</h2>
+						<p class="fragment" data-fragment-index="0">Lancés directement ou appelés depuis Java</p>
+						<p class="fragment" data-fragment-index="1">Lancer un serveur Jetty</p>
+						<pre class="fragment" data-fragment-index="1"><code>
+						@Grab('org.mortbay.jetty:jetty-embedded:6.1.26')
+						import org.mortbay.jetty.Server
+						import org.mortbay.jetty.servlet.Context
+						import org.mortbay.jetty.servlet.DefaultServlet
+
+						new Server(8080).with {
+						    new Context(it, '/', Context.SESSIONS).with {
+						        resourceBase = '.'
+						        addServlet(DefaultServlet, '/*').with {
+						            setInitParameter 'dirAllowed', 'true'
+						        }
+						    }
+						    start()
+						    join()
+						}
+						</code></pre>
+					</section>
+					<section>
+						<h2>Gradle</h2>
+						<p class="fragment" data-fragment-index="0">Automatisation de build, test, déploiement</p>
+						<p class="fragment" data-fragment-index="1">Combine Ant, Maven (ou Ivy) avec un DSL Groovy</p>
+						<p class="fragment" data-fragment-index="2">Enormément de plugins disponibles</p>
+						<p class="fragment" data-fragment-index="3">Facile d'étendre tâches/plugins</p>
+					</section>
+					<section>
+						<h2>Exemple: Grog</h2>
+						<p class="fragment" data-fragment-index="0">Générateur de site statique basé sur Gradle</p>
+						<p class="fragment" data-fragment-index="1">Utilise</p>
+						<p class="fragment" data-fragment-index="2">Enormément de plugins disponibles</p>
+					</section>
+					<section>
+						<h2>Spock</h2>
+						<p class="fragment" data-fragment-index="0">Tests basés sur des spécifications</p>
+						<pre class="fragment" data-fragment-index="0"><code>
+						class DataDriven extends Specification {
+						    def "maximum of two numbers"() {
+						        expect:
+						        Math.max(a, b) == c
+
+						        where:
+						        a | b | c
+						        3 | 5 | 5
+						        7 | 0 | 7
+						        0 | 0 | 0
+						    }
+						}
+						</code></pre>
+					</section>
+					<section>
+						<h2>Spock</h2>
+						<p class="fragment" data-fragment-index="0">Approche orientée BDD</p>
+						<pre class="fragment" data-fragment-index="0"><code>
+						class BehaviourDriven extends Specification {
+						    def "I plus I should equal II"() {
+						        given:
+						            def calculator = new RomanCalculator()
+						        when:
+						            def result = calculator.add("I", "I")
+						        then:
+						            result == "II"
+						    }
+						}
+						</code></pre>
+					</section>
+					<section>
+						<h2>Geb</h2>
+						<p class="fragment" data-fragment-index="0">Automatisation du navigateur</p>
+						<p class="fragment" data-fragment-index="0">(tests, screen scraping...)</p>
+						<pre class="fragment" data-fragment-index="0"><code>
+						Browser.drive {
+						    go "http://myapp.com/login"
+
+						    assert $("h1").text() == "Please Login"
+
+						    $("form.login").with {
+						        username = "admin"
+						        password = "password"
+						        login().click()
+						    }
+
+						    assert $("h1").text() == "Admin Section"
+						}
+						</code></pre>
+					</section>
+					<section>
+						<h2>Geb + Spock</h2>
+						<p class="fragment" data-fragment-index="0">Spécification GebSpec</p>
+						<pre class="fragment" data-fragment-index="0"><code>
+						class FunctionalSpec extends GebSpec {
+						    def "go to login"() {
+						        when:
+						        go "http://myapp.com/login"
+
+						        then:
+						        title == "Login Screen"
+						    }
+						}
+						</code></pre>
+					</section>
+					<section>
+						<h2>Grails</h2>
+					</section>
+					<section>
+						<h2>Vert.X</h2>
+					</section>
+					<section>
+						<h2>Et bien d'autres...</h2>
+						<p class="fragment" data-fragment-index="0">Automatisation du navigateur</p>
+					</section>
 				</section>
 				<section data-id="8340176fcda196116c84ad51563f7855">
 					<h2>Ressources</h2>
@@ -434,7 +498,7 @@
 						<img src="img/bdxjug.png">
 					</p>
 					<p class="fragment" data-fragment-index="1">
-						<img src="img/js.jpeg" style="width: 102px; height: 102px; max-height: none; max-width: none;">
+						<img src="img/bdxjs.jpeg" style="width: 102px; height: 102px; max-height: none; max-width: none;">
 					</p>
 					<h3 class="fragment" data-fragment-index="2">Merci à vous</h3>
 				</section>
