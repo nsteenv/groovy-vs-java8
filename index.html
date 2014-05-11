@@ -38,7 +38,7 @@
 				<section>
 					<h1>Groovy</h1>
 					<h2>vs</h2>
-					<h1>JAVA 8</h1>
+					<h1>Java 8</h1>
 				</section>
 				<section>
 					<h2>Whoami</h2>
@@ -48,7 +48,7 @@
 						<img src="img/bdxjug.png">
 					</p>
 					<p class="fragment" data-fragment-index="3">
-						<a href="http://vansteen.fr">http://vansteen.fr</a>
+						<a href="hhttp://v-vansteen.github.io/groovy-vs-java8/">http://v-vansteen.github.io/groovy-vs-java8/</a>
 					</p>
 					<p class="fragment" data-fragment-index="4">
 						Twitter: <a href="https://twitter.com/nsteenv">@nsteenv</a>
@@ -62,7 +62,7 @@
 						<p><img src="img/groovy.png" style="width: 500px; height: 300px; max-height: none; max-width: none;"></p>
 						<p class="fragment" data-fragment-index="0">Petite question:</p>
 						<p class="fragment" data-fragment-index="1">Qui a déjà utilisé Groovy?</p>
-						<p class="fragment" data-fragment-index="2">Non mais vraiment?</p>
+						<p class="fragment" data-fragment-index="2">Non vraiment?</p>
 					</section>
 					<section>
 						<h2>Statistiques</h2>
@@ -85,7 +85,8 @@
 						<h2>It's just Java!</h2>
 						<p class="fragment" data-fragment-index="0">Mais en mieux!</p>
 						<p class="fragment" data-fragment-index="1">Langage dynamique, orienté objet</p>
-						<p class="fragment" data-fragment-index="2">Avec une touche de programmation fonctionnelle</p>
+						<p class="fragment" data-fragment-index="2">Compile en bytecode</p>
+						<p class="fragment" data-fragment-index="3">S'exécute dans la JVM</p>
 					</section>
 					<section>
 						<h2>Par exemple</h2>
@@ -116,7 +117,7 @@
 							def numbers = [1, 2]
 							assert max( *numbers ) == 2
 						</code></pre>
-						<p class="fragment" data-fragment-index="0">et ce n'est qu'un début!</p>
+						<p class="fragment" data-fragment-index="0">et ce n'est pas tout!</p>
 					</section>
 					<section>
 						<h2>Closures</h2>
@@ -134,7 +135,7 @@
 						</code></pre>
 					</section>
 					<section>
-						<h2>Closures</h2>
+						<h2>Implémentation</h2>
 						<p class="fragment" data-fragment-index="0">Interfaces fonctionnelles</p>
 						<p class="fragment" data-fragment-index="1">Implémente par défaut la méthode call() de l'interface Callable</p>
 						<pre class="fragment" data-fragment-index="1"><code>
@@ -230,12 +231,78 @@
 					<section>
 						<h2>Optimisations</h2>
 						<p class="fragment" data-fragment-index="0">Flag InvokeDynamic (--indy) au niveau du compilateur</p>
-						<p class="fragment" data-fragment-index="1">Annotations @CompileStatic et @TypeChecked</p>
-						<p class="fragment" data-fragment-index="2">Utiliser Java pour les parties critiques</p>
+						<p class="fragment" data-fragment-index="1">Annotation @CompileStatic</p>
+						<p class="fragment" data-fragment-index="2">Fonctionne si l'on n'utilise pas de features</p>
 					</section>
 					<section>
-						<h2>Mais, mais...</h2>
-						<h3>Tout ça me rapelle vaguement...</h3>
+						<h2>Benchmarks</h2>
+						<p class="fragment" data-fragment-index="0">Régle n°1: Ne pas se fier aux benchmark</p>
+						<p class="fragment" data-fragment-index="1">Régle n°2: Ne pas se fier aux benchmark</p>
+						<p class="fragment" data-fragment-index="2">Donc, un benchmark!</p>
+					</section>
+					<section>
+						<h2>Fibonacci</h2>
+						<p class="fragment" data-fragment-index="0">Groovy</p>
+						<pre class="fragment" data-fragment-index="2"><code>
+							static int fibStaticTernary (int n) {
+							    n >= 2 ? fibStaticTernary(n-1) + fibStaticTernary(n-2) : 1
+							}
+
+							static int fibStaticIf (int n) {
+							    if(n >= 2) fibStaticIf(n-1) + fibStaticIf(n-2) else 1
+							}
+
+							int fibTernary (int n) {
+							    n >= 2 ? fibTernary(n-1) + fibTernary(n-2) : 1
+							}
+
+							int fibIf (int n) {
+							    if(n >= 2) fibIf(n-1) + fibIf(n-2) else 1
+							}
+						</code></pre>
+					</section>
+					<section>
+						<h2>Résultats</h2>
+						<table border="0" cellspacing="2" cellpadding="2">
+						<tbody>
+							<tr>
+								<td>&nbsp;</td>
+								<td>Sans @CompileStatic</td>
+								<td>Avec @CompileStatic</td>
+								<td>Java 8<td>
+							</tr>
+							<tr>
+								<td>fibStaticTernary</td>
+								<td>2098ms</td>
+								<td>1405ms</td>
+								<td>712ms</td>
+							</tr>
+							<tr>
+								<td>fibStaticIf</td>
+								<td>2480ms</td>
+								<td>1400ms</td>
+								<td>719ms</td>
+							</tr>
+							<tr>
+								<td>fibTernary</td>
+								<td>1986ms</td>
+								<td>1320ms</td>
+								<td>717ms</td>
+							</tr>
+							<tr>
+								<td>fibIf</td>
+								<td>2373ms</td>
+								<td>1256ms</td>
+								<td>769ms</td>
+							</tr>
+						</tbody>
+						</table>
+					</section>
+					<section>
+						<h2>Bilan</h2>
+						<p class="fragment" data-fragment-index="0">Ne pas se fier aux benchmarks!</p>
+						<p class="fragment" data-fragment-index="1">Permet d'améliorer un petit peu les performances</p>
+						<p class="fragment" data-fragment-index="2">Utiliser Java si vraiment besoin de perfs</p>
 					</section>
 				</section>
 				<section data-background-image="img/newchallenger.png" data-background-size="contain"></section>
@@ -340,38 +407,9 @@
 				</section>
 				<section>
 					<section>
-						<h2>DSL</h2>
-						<pre class="fragment" data-fragment-index="1"><code>
-							  static mapping = {
-							    table 'person'
-							    columns {
-							      name column:'name'
-							    }
-							  }
-						</code></pre>
-					</section>
-					<section>
-						<h2>Exemple</h2>
-						<p class="fragment" data-fragment-index="0">Domain Specific Languages</p>
-						<p class="fragment" data-fragment-index="1">Modéliser la logique métier à l'aide un mini-langage dédié</p>
-						<p class="fragment" data-fragment-index="1">Syntaxe proche du langage naturel</p>
-					</section>
-				</section>
-				<section>
-					<section>
-						<h2>Ecosystème</h2>
-					</section>
-
-					<section>
-						<h2>GVM</h2>
-						<p class="fragment" data-fragment-index="0">Groovy enVironment Manager</p>
-						<p class="fragment" data-fragment-index="1">Installer/désistaller et gérer les différentes versions</p>
-						<p class="fragment" data-fragment-index="2">Groovy, Gradle, Grails, etc...</p>
-					</section>
-					<section>
 						<h2>Scripts</h2>
-						<p class="fragment" data-fragment-index="0">Lancés directement ou appelés depuis Java</p>
-						<p class="fragment" data-fragment-index="1">Lancer un serveur Jetty</p>
+						<p class="fragment" data-fragment-index="0">En ligne de commande (Python, Bash) </p>
+						<p class="fragment" data-fragment-index="1">Ex: lancer un serveur Jetty</p>
 						<pre class="fragment" data-fragment-index="1"><code>
 						@Grab('org.mortbay.jetty:jetty-embedded:6.1.26')
 						import org.mortbay.jetty.Server
@@ -391,6 +429,106 @@
 						</code></pre>
 					</section>
 					<section>
+						<h2>Appelé depuis une application Java</h2>
+						<pre class="fragment" data-fragment-index="1"><code>
+						ClassLoader parent = getClass().getClassLoader();
+						GroovyClassLoader loader = new GroovyClassLoader(parent);
+						Class groovyClass = loader.parseClass(
+						    new File("src/test/groovy/script/HelloWorld.groovy")
+						);
+
+						GroovyObject groovyObject = (GroovyObject) groovyClass.newInstance();
+						Object[] args = {};
+						groovyObject.invokeMethod("run", args);
+						</code></pre>
+					</section>
+					<section>
+						<h2>Exemple</h2>
+						<p class="fragment" data-fragment-index="1">Jenkins</p>
+						<p class="fragment" data-fragment-index="1"><img src="img/jenkins.png"></p>
+						<p class="fragment" data-fragment-index="2">Groovy Plugin & Script Console</p>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>DSL</h2>
+						<p class="fragment" data-fragment-index="0">Domain Specific Languages</p>
+						<p class="fragment" data-fragment-index="1">Modéliser une logique métier à l'aide un mini-langage</p>
+						<p class="fragment" data-fragment-index="2">Syntaxe proche du langage naturel</p>
+					</section>
+					<section>
+						<h2>Exemple</h2>
+						<p class="fragment" data-fragment-index="0">Contraintes Grails</p>
+						<pre class="fragment" data-fragment-index="0"><code>
+							class Customer {
+							   int age
+							   String name
+							   static constraints = {
+							      age(size:18..65)
+							      name(size:3..20, blank:false)
+							   }
+							}
+						</code></pre>
+					</section>
+					<section>
+						8
+						<pre class="fragment" data-fragment-index="0"><code>
+							class Worker {
+							   Object invokeMethod(String name, Object args) {
+							      println “${name} method called.”
+							   }
+							   ..
+							}
+						</code></pre>
+					</section>
+					<section>
+						<h2>Validator</h2>
+						<pre class="fragment" data-fragment-index="0"><code>
+							class Validator {
+							   def subject
+							   public void validate(def o) {
+							      subject = o
+							      o.constraints.setDelegate(this)
+							      o.constraints.call()
+							      println "Validation complete."
+							   }
+							...
+							}
+						</code></pre>
+					</section>
+					<section>
+						<h2>Validator</h2>
+						<pre class="fragment" data-fragment-index="0"><code>
+							Object invokeMethod(String name, Object args) {
+							    def val = subject.getProperty(name)
+							    args[0].each {
+							        switch(val?.class) {
+							            case null: if (it.key =="blank" && !val)
+							                println "failed: property '${name}' is null."
+							                break
+							            case Integer :
+							                if (it.key == "size" && !(it.value.contains(val)))
+							                println "failed: Integer property '${name}' has value '${val}' not in range '${it.value.inspect()}'."
+							                break
+							            ...
+						</code></pre>
+					</section>
+					<section>
+						<h2>Intérêt</h2>
+						<p class="fragment" data-fragment-index="0">Appliquer une logique sur des régles métiers</p>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Ecosystème</h2>
+					</section>
+					<section>
+						<h2>GVM</h2>
+						<p class="fragment" data-fragment-index="0">Groovy enVironment Manager</p>
+						<p class="fragment" data-fragment-index="1">Installer/désistaller et gérer les différentes versions</p>
+						<p class="fragment" data-fragment-index="2">Groovy, Gradle, Grails, etc...</p>
+					</section>
+					<section>
 						<h2>Gradle</h2>
 						<p class="fragment" data-fragment-index="0">Automatisation de build, test, déploiement</p>
 						<p class="fragment" data-fragment-index="1">Combine Ant, Maven (ou Ivy) avec un DSL Groovy</p>
@@ -400,8 +538,8 @@
 					<section>
 						<h2>Exemple: Grog</h2>
 						<p class="fragment" data-fragment-index="0">Générateur de site statique basé sur Gradle</p>
-						<p class="fragment" data-fragment-index="1">Utilise</p>
-						<p class="fragment" data-fragment-index="2">Enormément de plugins disponibles</p>
+						<p class="fragment" data-fragment-index="1">Spécification du contenu en Asciidoc</p>
+						<p class="fragment" data-fragment-index="2">Moteur de templates Groovy</p>
 					</section>
 					<section>
 						<h2>Spock</h2>
@@ -474,25 +612,125 @@
 					</section>
 					<section>
 						<h2>Grails</h2>
+						<p class="fragment" data-fragment-index="0">Framework web MVC full-stack</p>
+						<p class="fragment" data-fragment-index="1">Convention over configuration</p>
+						<p class="fragment" data-fragment-index="1">Don't repeat yourselft</p>
+						<p class="fragment" data-fragment-index="1">Play Framework, Django, Ruby on Rails</p>
 					</section>
 					<section>
-						<h2>Vert.X</h2>
+						<h2>Architecture</h2>
+						<p class="fragment" data-fragment-index="0"><img src="img/grails.png"></p>
+					</section>
+					<section>
+						<h2>Modèle</h2>
+						<pre class="fragment" data-fragment-index="0"><code>
+						class Customer {
+						    String firstName, lastName
+						    Date birthday
+						    String gender
+						    String maritalStatus
+						}
+						</code></pre>
+					</section>
+					<section>
+						<h2>Vue</h2>
+						<pre class="fragment" data-fragment-index="0"><code>
+						Customer name:
+						<g:each in="${customerList}" var="cust">
+						   ${cust.lastName}, ${cust.firstName}
+						</g:each>
+						</code></pre>
+					</section>
+					<section>
+						<h2>Controlleur</h2>
+						<pre class="fragment" data-fragment-index="0"><code>
+						class CustomerController {
+						    def list() {
+						        def list = Customer.list()
+						        [list:list]
+						    }
+						}
+						</code></pre>
+					</section>
+					<section>
+						<h2>GORM</h2>
+						<p class="fragment" data-fragment-index="0">Grails Object Relational Mapping</p>
+						<pre class="fragment" data-fragment-index="0"><code>
+						def book = Book.findByTitle("Groovy in Action")
+						book
+						  .addToAuthors(name:"Dierk Koenig")
+						  .addToAuthors(name:"Guillaume LaForge")
+						  .save()
+						</code></pre>
+					</section>
+					<section>
+						<h2>Avantages</h2>
+						<p class="fragment" data-fragment-index="0">Développement rapide d'applications CRUD</p>
+						<p class="fragment" data-fragment-index="1">Dispose d'énormément de plugins</p>
+						<p class="fragment" data-fragment-index="2">Nécessite peu de configuration préalable</p>
+					</section>
+					<section>
+						<h2>Inconvénients</h2>
+						<p class="fragment" data-fragment-index="0">Toute la stack Spring + Hibernate par défaut => lourd</p>
+						<p class="fragment" data-fragment-index="1">Compliqué de s'éloigner de l'architecture de base</p>
+						<p class="fragment" data-fragment-index="2">Peut vite devenir une usine a gaz</p>
+					</section>
+					<section>
+						<h2>Vertx</h2>
+						<p class="fragment" data-fragment-index="0">Communication asynchrone</p>
+						<p class="fragment" data-fragment-index="1">Bus d'événements</p>
+						<pre class="fragment" data-fragment-index="1"><code>
+						vertx.createHttpServer().requestHandler { req ->
+						    def file = req.uri == "/" ? "index.html" : req.uri
+						    req.response.sendFile "webroot/$file"
+						}.listen(8080)
+						</code></pre>
+					</section>
+					<section>
+						<h2>Vertx</h2>
+						<p class="fragment" data-fragment-index="0">Basé sur des Verticles/Workers</p>
+						<p class="fragment" data-fragment-index="1">Echangent des informations à travers un Bus</p>
+						<p class="fragment" data-fragment-index="1"><img src="img/vertx.png"></p>
+					</section>
+					<section>
+						<h2>Vertx</h2>
+						<p class="fragment" data-fragment-index="0">Polyglotte</p>
+						<p class="fragment" data-fragment-index="0">Groovy, Java, Javascript, Coffeescript, Ruby, Python</p>
+					</section>
+					<section>
+						<h2>Ratpack</h2>
+						<p class="fragment" data-fragment-index="0">Framework web MVC léger</p>
+						<p class="fragment" data-fragment-index="1">Basé sur Netty</p>
+						<pre class="fragment" data-fragment-index="1"><code>
+						@Grab("io.ratpack:ratpack-groovy:0.9.3")
+						import static ratpack.groovy.Groovy.*
+
+						ratpack {
+						  handlers {
+						    get {
+						      render "Hello world!"
+						    }
+						  }
+						}
+						</code></pre>
 					</section>
 					<section>
 						<h2>Et bien d'autres...</h2>
-						<p class="fragment" data-fragment-index="0">Automatisation du navigateur</p>
+						<p class="fragment" data-fragment-index="0">GroovyFX - JavaFX avec Groovy</p>
+						<p class="fragment" data-fragment-index="0">GrooScript - Convertir du Groovy en JS</p>
+						<p class="fragment" data-fragment-index="0">SimpleCI - Serveur d'intégration continue</p>
 					</section>
 				</section>
-				<section data-id="8340176fcda196116c84ad51563f7855">
+				<section>
 					<h2>Ressources</h2>
 					<div>
-						<br>
-					</div>
-					<div>
-						<br>
+						<p class="fragment" data-fragment-index="0"><a href="http://groovy.codehaus.org/Documentation">Documentation officielle</a></p>
+						<p class="fragment" data-fragment-index="1"><a href="http://groovy.codehaus.org/Mailing+Lists">Mailing list</a></p>
+						<p class="fragment" data-fragment-index="2"><a href="http://glaforge.appspot.com/article/groovy-weekly-15">Groovy weekly</a></p>
+						<p class="fragment" data-fragment-index="3"><a href="http://mrhaki.blogspot.fr/">Groovy Goodness</a></p>
 					</div>
 				</section>
-				<section data-id="53885c1b7ab5cae80363a079a5e6341b">
+				<section>
 					<h2>Credits</h2>
 					<p class="fragment" data-fragment-index="0">
 						<img src="img/bdxjug.png">
